@@ -25,6 +25,12 @@ public class Customer {
 		this.sPlan = sPlan;
 	}
 
+	public Customer(String email) {
+		super();
+		this.email = email;
+	}
+
+
 
 	@Override
 	public String toString() {

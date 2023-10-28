@@ -1,6 +1,8 @@
 package com.Account.utils;
 
 import java.time.LocalDate;
+import java.util.List;
+
 import com.Account.Core.Customer;
 import com.Account.Core.Plan;
 import com.Account.utils.CustInfoExc;
@@ -19,19 +21,28 @@ public static void validateRegAmount(Plan sPlan,double rAmount)throws CustInfoEx
     	  throw new CustInfoExc("Opening Amount is lower then min. required for this plan.");
 }
 
+public static void dupEmail(String Email,List<Customer>Bank)throws CustInfoExc
+{
+     	Customer newCust=new Customer(Email);
+     	
+     	if(Bank.contains(newCust))
+     		throw new CustInfoExc("Email already exists ");
+     		    		
+}
+
 private static Plan planValidate(String sPlan)throws IllegalArgumentException
 {
    return Plan.valueOf(sPlan.toLowerCase());	
 }
 
-
-
 public static Customer detailsCheck(String fName, String lName, String email, String password, double rAmount,
-		String dob,String sPlan)throws IllegalArgumentException,CustInfoExc
+		String dob,String sPlan,List<Customer>Bank)throws IllegalArgumentException,CustInfoExc
 {
-	Plan splan=planValidate(sPlan);
+	Plan splan=planValidate(sPlann);
 	
     validateRegAmount(splan,rAmount);
+    
+    dupEmail(email,Bank);
 	
 	LocalDate date=parseDate(dob);
 	
