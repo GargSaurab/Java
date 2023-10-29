@@ -38,7 +38,7 @@ private static Plan planValidate(String sPlan)throws IllegalArgumentException
 public static Customer detailsCheck(String fName, String lName, String email, String password, double rAmount,
 		String dob,String sPlan,List<Customer>Bank)throws IllegalArgumentException,CustInfoExc
 {
-	Plan splan=planValidate(sPlann);
+	Plan splan=planValidate(sPlan);
 	
     validateRegAmount(splan,rAmount);
     

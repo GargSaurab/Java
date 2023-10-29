@@ -2,7 +2,7 @@ package com.Account.Core;
 
 import java.time.LocalDate;
 
-public class Customer {
+public class Customer implements Comparable<Customer>{
 
 	private int custId;
 	private String fName,lName,email,password;
@@ -30,13 +30,25 @@ public class Customer {
 		this.email = email;
 	}
 
+	public String getPassword() {
+		return password;
+	}
 
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	@Override
 	public String toString() {
 		return "Customer [custId=" + custId + ", fName=" + fName + ", lName=" + lName + ", rAmount=" + (rAmount+sPlan.getPlanCost())
 				+ ", dob=" + dob + ", sPlan=" + sPlan + "]";
 	}
+	
+	@Override
+	 public int compareTo(Customer cust)
+	 {
+		return this.email.CompareTo(cust.email);
+	 }
 	
 	@Override
 	 public boolean equals(Object anotherObj)
