@@ -11,6 +11,7 @@ import com.Account.utils.ValidationRules;
 import com.CustomOrder.InDobOrder;
 import static com.Account.utils.ValidationRules.detailsCheck;
 import static com.Account.utils.BankUtils.*;
+import static com.subscribeCust.SubPayment.*;
 
 public class BankManagement {
 
@@ -26,16 +27,17 @@ public class BankManagement {
 		  
 		  while(!exit)
 		  {
-			  System.out.println("Opitons \n1. SignUp New Account: \n2.SignIn: \n3.Change Password \n4.Unsubscribe \n5.Display Details \n6.Sort the Customer List \n7.Sort Customer(Dob) \n8.Sort Customer(DOB,Last Name) \n0.EXIT");
+			  System.out.print("\nOpitons \n1. SignUp New Account: \n2.SignIn: \n3.Change Password \n4.Unsubscribe \n5.Display Details \n6.Sort the Customer List \n7.Sort Customer(Dob) \n8.Sort Customer(DOB,Last Name) \n9.See Customers(payment pending) \n10.Remove Defaulter Customer\n0.EXIT");
 			  
-			  System.out.println("Enter the Choice:");
+			  System.out.println("\nEnter the Choice:");
 			  
 		  try{
 				  switch(sc.nextInt())
 			      {
+				     
 			         case 1:
-			        	 System.out.println("Enter the Account Details \nFirst Name: \nLast Name: \nEmail: \nPassword: \nOpening Amount \nDate of Birth: \nPlan: ");
-			   		  Customer cust1=detailsCheck(sc.next(),sc.next(),sc.next(),sc.next(),sc.nextDouble(),sc.next(),sc.next(),Bank); 
+			        	 System.out.println("Enter the Account Details \nFirst Name: \nLast Name: \nEmail: \nPassword: \nOpening Amount \nDate of Birth: \nLast Subscription Date: \nPlan: ");
+			   		  Customer cust1=detailsCheck(sc.next(),sc.next(),sc.next(),sc.next(),sc.nextDouble(),sc.next(),sc.next(),sc.next(),Bank); 
 			   		  
 			   		  Bank.add(cust1);
 			   		  
@@ -107,7 +109,7 @@ public class BankManagement {
 		            	  
 		           case 8:
 		        	   
-		        	    Collections.sort(Bank,new Comparator<Customer>(){
+		        	    Collections.sort(Bank,new Comparator<Customer>(){ //anonymous class:It dosen't have a name 
 		        	    	@Override
 		        	    	public int compare(Customer cust1,Customer cust2)
 		        	    	{
@@ -123,7 +125,36 @@ public class BankManagement {
 		        	    });
 		        	    
 		        	    break;
-		             case 0:
+		        	    
+		           case 9:
+		        	   
+		        	     System.out.println("Enter the Duration:");
+		        	       
+		        	          List<Customer>pCust=pendPayment(sc.nextInt(),Bank);
+		        	          
+		        	          for(Customer dcust:pCust)
+		        	          {
+		        	        	  System.out.println("Name:"+dcust.getfName()+" "+dcust.getlName()+"  LastSubscriptionDate:"+dcust.getlSubDate());
+		        	          }
+		                 
+		        	     break;
+		        	          
+		           case 10:
+		        	   
+		        	      System.out.println("Enter the Duration:");
+		        	       
+		        	      DCustomer(sc.nextInt(),Bank);
+		        	      
+//	        	             List<Customer>dCust=DCustomer(sc.nextInt(),Bank);
+//	        	             
+//	        	             for(Customer dcust:dCust)
+//		        	          {
+//		        	        	  System.out.println("Name:"+dcust.getfName()+" "+dcust.getlName()+" Last Subriction Date:"+dcust.getlSubDate()+"\n");
+//		        	          }
+		        	      
+	        	         break;
+	        	         
+		           case 0:
 		            	 
 		            	 exit=true;
 			      }

@@ -10,10 +10,11 @@ public class Customer implements Comparable<Customer>{
 	private LocalDate dob;
 	private Plan sPlan;
     private static int custCount;
+    private LocalDate lSubDate;
     
 	
 	public Customer(String fName, String lName, String email, String password, double rAmount,
-			LocalDate dob, Plan sPlan) {
+			LocalDate dob, Plan sPlan,LocalDate lSubDate) {
 		
 		this.custId = 10012+(++custCount);
 		this.fName = fName;
@@ -23,6 +24,11 @@ public class Customer implements Comparable<Customer>{
 		this.rAmount = rAmount;
 		this.dob = dob;
 		this.sPlan = sPlan;
+		this.lSubDate=lSubDate;  //LocalDate.now();
+	}
+
+	public LocalDate getlSubDate() {
+		return lSubDate;
 	}
 
 	public int getCustId() {
@@ -72,8 +78,9 @@ public class Customer implements Comparable<Customer>{
 
 	@Override
 	public String toString() {
-		return "Customer [custId=" + custId + ", fName=" + fName + ", lName=" + lName + ", rAmount=" + (rAmount+sPlan.getPlanCost())
-				+ ", dob=" + dob + ", sPlan=" + sPlan + "]";
+		return "Customer [custId=" + custId + ", fName=" + fName + ", lName=" + lName + ", email=" + email
+				+ ", password=" + password + ", rAmount=" + rAmount + ", dob=" + dob + ", sPlan=" + sPlan
+				+ ", lSubDate=" + lSubDate + "]";
 	}
 	
 	@Override

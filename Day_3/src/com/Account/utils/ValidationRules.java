@@ -36,7 +36,7 @@ private static Plan planValidate(String sPlan)throws IllegalArgumentException
 }
 
 public static Customer detailsCheck(String fName, String lName, String email, String password, double rAmount,
-		String dob,String sPlan,List<Customer>Bank)throws IllegalArgumentException,CustInfoExc
+		String dob,String sPlan,String lSubDate,List<Customer>Bank)throws IllegalArgumentException,CustInfoExc
 {
 	Plan splan=planValidate(sPlan);
 	
@@ -46,7 +46,9 @@ public static Customer detailsCheck(String fName, String lName, String email, St
 	
 	LocalDate date=parseDate(dob);
 	
-   return new Customer(fName,lName,email,password,rAmount,date,splan);	
+	LocalDate lsubDate=parseDate(lSubDate);
+	
+   return new Customer(fName,lName,email,password,rAmount,date,splan,lsubDate);	
 }
 	
 	
