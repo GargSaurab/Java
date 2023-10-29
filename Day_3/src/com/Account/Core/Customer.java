@@ -25,6 +25,38 @@ public class Customer implements Comparable<Customer>{
 		this.sPlan = sPlan;
 	}
 
+	public int getCustId() {
+		return custId;
+	}
+
+	public String getfName() {
+		return fName;
+	}
+
+	public String getlName() {
+		return lName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public double getrAmount() {
+		return rAmount;
+	}
+
+	public Plan getsPlan() {
+		return sPlan;
+	}
+
+	public static int getCustCount() {
+		return custCount;
+	}
+
+	public LocalDate getDob() {
+		return dob;
+	}
+
 	public Customer(String email) {
 		super();
 		this.email = email;
@@ -47,7 +79,7 @@ public class Customer implements Comparable<Customer>{
 	@Override
 	 public int compareTo(Customer cust)
 	 {
-		return this.email.CompareTo(cust.email);
+		return this.email.compareTo(cust.email);
 	 }
 	
 	@Override
