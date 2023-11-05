@@ -14,10 +14,4 @@ public enum Plan {
 		return pAmount;
 	}
 
-	public void setpAmount(double pAmount) {
-		this.pAmount = pAmount;
-	}
-	
-	
-
 }
